@@ -111,21 +111,34 @@ class usersController{
             header('Location:/tp2/adminUsers');
         }
         else{
-            header('Location:/tp2/home');
+            $error = 2;
+            $this->Userview->renderFormLogIn($error);
         }
     }
     function turnOnPermitions($param){
-        if(!empty($param)){
-            $rol = 'admin';
-            $this->Usermodel->takePermition($rol, $param);
-            header('Location:/tp2/adminUsers');
+        if($this->helper->checkAdmin()){
+            if(!empty($param)){
+                $rol = 'admin';
+                $this->Usermodel->takePermition($rol, $param);
+                header('Location:/tp2/adminUsers');
+            }
+        }
+        else{
+            $error = 2;
+            $this->Userview->renderFormLogIn($error);
         }
     }
     function turnOffPermitions($param){
-        if(!empty($param)){
-            $rol = 'No-admin';
-            $this->Usermodel->takeOffPermition($rol, $param);
-            header('Location:/tp2/adminUsers');
+        if($this->helper->checkAdmin()){
+            if(!empty($param)){
+                $rol = 'No-admin';
+                $this->Usermodel->takeOffPermition($rol, $param);
+                header('Location:/tp2/adminUsers');
+            }
+        }
+        else{
+            $error = 2;
+                $this->Userview->renderFormLogIn($error);
         }
     }
 }
