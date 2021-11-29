@@ -1,0 +1,16 @@
+div#showComments div.divComment {
+    background-color: rgb(100, 100, 100);
+    border: 2px solid red;
+    color: white;
+}
+.detalle_comentario{
+    text-transform: uppercase;
+    display: flex;
+    font-family: fantasy;
+    flex-flow: column;
+    background-color: rgb(201, 201, 201);
+    border: 2px solid black;
+}
+#renderProduct{
+    background-color: white;
+}
